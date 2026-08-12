@@ -31,7 +31,7 @@ proofreadBtn.addEventListener('click', async () => {
     resultsSection.classList.add('hidden');
 
     try {
-        const response = await fetch('https://CatProof-api.onrender.com/check', {
+        const response = await fetch('https://catproof-api.onrender.com/check', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ text: text })
