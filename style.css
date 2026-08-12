@@ -5,41 +5,248 @@
     padding: 0;
 }
 body{
-    background-color: rgb(255, 210, 241);
-    font-family:'Dancing Script', cursive;
-    padding: 40px 20px;   
+    background-color: rgb(251, 234, 246);
+    font-family: 'Times New Roman', Times, serif;
+    padding: 20px 40px;  
+    color: black; 
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 .container{
-    max-width: 750px;
-    margin: 0 auto;
+    padding-left: 50px;
+    padding-right: 50px;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+header{
+    margin-bottom: 25px;
+}
+h1, p, h2{
+    font-family:'Dancing Script', cursive;
+    text-align: center;
 }
 h1{
-    font-size: large;
+    font-size: 3.5rem;
     font-weight: bold;
-    word-spacing: 0;
-    color:black;
 }
 p{
-    font-size: small;
-    color: black;
+    font-size: 2rem;
+    color:rgb(94, 94, 94);
+}
+.stats-box{
+    border: 2px dashed black;
+    border-radius: 25px;
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+.editor-container{
+    border: 2px dashed black;
+    border-radius: 25px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    flex: 1;
+    min-height: 0;
+}
+#detector, #editor-preview{
+    flex: 1;
+    overflow-y: auto;
+    width: 100%;
+    border: none;
+    resize: none;
+    outline: none;
+    font-size: 1.2rem;
+    font-family: inherit;
+    padding: 20px;
+}
+.button-bar{
+    border-top: 2px solid rgb(179, 179, 179);
+    display: flex;
+    justify-content: flex-end;
+    padding: 12px 20px;
+    background-color: snow;
+}
+#proofread-btn{
+    padding: 10px;
+    font-size: 1.3rem;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 20px;
+    font-family: "Dancing Script", cursive;
+    border: 2px dashed rgb(247, 59, 134);
+    position: relative;
+    overflow: hidden;
+    font-weight: 400;
+    transition: font-weight 0.2 ease, transform 0.2s ease;
+}
+#proofread-btn:hover{
+    font-weight: bold;
+    text-shadow: 0.5px 0 0 currentColor, -0.5px 0 0 currentColor;
+}
+.hidden{
+    display: none !important;
+}
+.loading-container{
+    text-align: center;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto 0;
+}
+.loading-cats img{
+    display: inline-block;
+    width: 65px;
+    height: auto;
+    margin-bottom: 3px;
+    animation: bounceCat 1.2s infinite ease-in-out;
+}
+.cat-1 img, .cat-1{animation-delay: 0s;}
+.cat-2 img, .cat-2{animation-delay: 0.2s;}
+.cat-3 img, .cat-3{animation-delay: 0.4s;}
+@keyframes bounceCat{
+    0%, 80%, 100%{
+        transform: translateY(0);
+        opacity: 0.6;
+    }
+    40%{
+        transform: translateY(-15px);
+        opacity: 1;
+    }
+}
+.stats-box h2{
+    font-size: 2.8rem;
+    margin-bottom: 25px;
+}
+
+.stats-list ul{
+    list-style-type: none;
+    margin-bottom: 15px;
+    padding-left: 10px;
+}
+.stats-list li{
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+.mascot-container{
+    text-align: center;
+}
+#cat-mascot{
+    max-width: 280px;
+    height: auto;
+}
+#message{
+    font-size: 1.4rem;
+    margin-top: 9px;
+    color: rgb(108, 108, 108);
 }
 .main-layout{
     display: flex;
-    flex-direction: column;
     gap: 20px;
-}
-.editor-section, .sidebar-section{
-    width: 100%;
+    flex: 1;
+    margin-bottom: 20px;
 }
 @media (min-width: 768px){
     .main-layout{
         flex-direction: row;
-        align-items: flex-start;
+        align-items: stretch;
     }
     .editor-section{
         flex: 3;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
     }
-    .sidebar-section{
+    .stats-box{
         flex: 1;
+        height: 100%;
+    }
+}
+.typos, .grammar{
+    position: relative;
+    cursor: pointer;
+    text-decoration: underline rgb(241, 10, 10);
+    text-decoration-thickness: 3px;
+    transition: backgorund-color 0.2s ease;
+    line-height: 1;
+    display: inline-block;
+}
+.typos:hover, .grammar:hover{
+    background-color: rgb(233, 164, 164);
+}
+.typos:hover::after, .grammar:hover::after{
+    content: attr(data-suggestion);
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: lavenderblush;
+    color: black;
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    font-size: 0.8rem;
+    z-index: 1000;
+    pointer-events: none;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+}
+.reviewed{
+    text-decoration: underline rgb(9, 136, 9) 3px;
+}
+.reviewed:hover{
+    background-color: rgb(161, 233, 161);
+}
+#editor-preview{
+    flex: 1;
+    overflow-y: auto;
+    width: 100%;
+    font-size: 1.2rem;
+    font-family: inherit;
+    padding: 20px;
+    white-space: pre-wrap;
+    display: none;
+}
+@media screen and (max-width: 768px) {
+    body {
+        overflow-y: auto !important;
+        height: auto !important;
+        padding: 15px 25px; /* Adds healthy breathing room on the left/right phone edges */
+    }
+    
+    .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .main-layout {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        height: auto !important;
+        gap: 20px; /* Controls the exact gap between the editor and stats boxes */
+    }
+
+    .editor-section, .stats-box {
+        flex: none !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    /* Fixes the editor box height so it matches a nice comfortable writing size */
+    .editor-container {
+        min-height: 350px;
+    }
+
+    #detector, #editor-preview {
+        min-height: 280px; /* Makes sure the typing area is spacious */
     }
 }

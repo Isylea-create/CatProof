@@ -2,34 +2,59 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Minimalist Proofreader</title>
+
+        <link rel="manifest" href="manifest.json">
+        <link rel="icon" type="image/jpg" href="cat-icon.jpg">
+        <link rel="apple-touch-icon" href="cat-icon.jpg">
+        
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <div class="container">
-           <h1>CatProof</h1>
-           <p>Designed to aid your writing journey</p>
+           <header>
+               <h1>CatProof</h1>
+               <p>Designed To Aid Your Writing Journey</p>
+           </header>
+
            <div class="main-layout">
-           <aside class="sidebar-section">
-           <div class="stats-bar">
-               <div class="stats-card">
-                   <span id="word-count">0</span>
-                   <span class="stat-label">Words</span>
-                </div>
-                <div class="stats-card">
-                    <span id="char-count">0</span>
-                    <span class="stat-label">Characters</span>
-                </div>
-                <div class="stats-card">
-                    <span id="quality-score">100</span>
-                    <span class="stat-label">Quality-Score</span>
-                </div>
-            </div>
-            </aside> 
-            <main class="editor-section">
-                <textarea id="detector" placeholder="Input text here..."></textarea>
-            </main> 
+                <main class="editor-section">
+                    <div class="editor-container">
+                        <textarea id="detector" placeholder="Input text here..."></textarea>
+                        <div id="editor-preview" style="display: none;"></div>
+                        <div class="button-bar">
+                            <button id="proofread-btn">Proofread</button>
+                        </div>
+                    </div>
+                </main> 
+
+               <aside class="stats-box">
+                   <h2>Stats</h2>
+                   <div id="loading-container" class="loading-container hidden">
+                    <div class="loading-cats">
+                        <span class="cat cat-1"><img src="cat-loading.jpg" alt="Loading Cat"></span>
+                        <span class="cat cat-2"><img src="cat-loading.jpg" alt="Loading Cat"></span>
+                        <span class="cat cat-3"><img src="cat-loading.jpg" alt="Loading Cat"></span>
+                    </div>
+                    <p class="loading-text">Meowing...</p>
+                   </div>
+                   <div id="results-section" class="hidden">
+                       <div class="stats-list">
+                           <ul>
+                            <li>Word Count: <span id="word-count">...words</span></li>
+                            <li>Character Count: <span id="char-count">...chars</span></li>
+                            <li>Typos: <span id="typo-count">...mistakes</span></li>
+                            <li>Grammar: <span id="grammar-count">...mistakes</span></li>
+                            <li>Quality Score: <span id="quality-score">.../100</span></li>
+                           </ul> 
+                           <div class="mascot-container">
+                               <img id="cat-mascot" src="cat-mascot.jpg" alt="Cat Mascot">
+                               <p id="message">"Excellent job! Keep writing!"</p>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
             </div> 
         </div>
         <script src="script.js"></script>
