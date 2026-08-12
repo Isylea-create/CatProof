@@ -1,0 +1,16 @@
+{
+    "name": "CatProof",
+    "short_name": "CatProof",
+    "start_ul": "/",
+    "display": "standalone",
+    "background_color": "#fbeaf6",
+    "theme_color": "#fbeaf6",
+    "icons": [
+        {
+            "src": "cat-icon.jpg",
+            "sizes": "512x512",
+            "type": "image/jpg"
+    }
+]
+
+}
